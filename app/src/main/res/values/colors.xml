@@ -1,0 +1,30 @@
+<resources>
+    <color name="primary">#FF00639C</color>
+    <color name="onPrimary">#FFFFFFFF</color>
+    <color name="primaryContainer">#FFCCE7FF</color>
+    <color name="onPrimaryContainer">#FF001E35</color>
+    <color name="secondary">#FF00639C</color>
+    <color name="onSecondary">#FFFFFFFF</color>
+    <color name="secondaryContainer">#FFCCE7FF</color>
+    <color name="onSecondaryContainer">#FF001E35</color>
+    <color name="tertiary">#FF00639C</color>
+    <color name="onTertiary">#FFFFFFFF</color>
+    <color name="tertiaryContainer">#FFCCE7FF</color>
+    <color name="onTertiaryContainer">#FF001E35</color>
+    <color name="error">#FFBA1A1A</color>
+    <color name="onError">#FFFFFFFF</color>
+    <color name="errorContainer">#FFFFDAD6</color>
+    <color name="onErrorContainer">#FF410002</color>
+    <color name="background">#FFFCFCFF</color>
+    <color name="onBackground">#FF1C1B1E</color>
+    <color name="surface">#FFFCFCFF</color>
+    <color name="onSurface">#FF1C1B1E</color>
+    <color name="surfaceVariant">#FFF0F0F0</color>
+    <color name="onSurfaceVariant">#FF44474F</color>
+    <color name="outline">#FF75777F</color>
+    <color name="inverseOnSurface">#FFF4F3F1</color>
+    <color name="inverseSurface">#FF2F2E31</color>
+    <color name="inversePrimary">#FF74CEFF</color>
+    <color name="scrim">#FF000000</color>
+    <color name="transparent">#00000000</color>
+</resources>

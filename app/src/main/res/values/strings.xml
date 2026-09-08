@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">SmartCalc</string>
+    <string name="calculator_emi">Personal Loan EMI</string>
+    <string name="calculator_personal_loan_dvr">Personal Loan DVR</string>
+    <string name="calculator_credit_card_dvr">Credit Card DVR</string>
+    <string name="calculator_history">Calculation History</string>
+    <string name="calculator_about">About</string>
+    <string name="personal_loan_dvr_title">Personal Loan DVR</string>
+    <string name="credit_card_dvr_title">Credit Card DVR</string>
+    <string name="emi_calculator_title">EMI Calculator</string>
+    <string name="calculate">Calculate</string>
+    <string name="eligible">Eligible</string>
+    <string name="not_eligible">Not Eligible</string>
+    <string name="monthly_net_salary">Monthly Net Salary</string>
+    <string name="existing_loan_emis">Existing Loan EMIs</string>
+    <string name="total_monthly_obligation">Total Monthly Obligation</string>
+    <string name="maximum_permitted_dvr">Maximum Permitted DVR</string>
+    <string name="dvr_result">DVR Result</string>
+    <string name="remaining_capacity">Remaining Capacity</string>
+    <string name="calculation_breakdown">Calculation Breakdown</string>
+    <string name="no_recent_calculations">No recent calculations</string>
+    <string name="created_by">Created by</string>
+    <string name="made_with_love">Made with ❤️ by Nahin for Bank Asia PLC</string>
+    <string name="disclaimer">This application is a calculation aid. Final credit decisions and policy interpretation remain subject to the latest approved Bank Asia policy, PPG/PPD, circulars, regulatory requirements, and competent authority.</string>
+    <string name="personal_loan_dvr_methodology">Personal Loan DVR based on Bank Asia Personal Loan PPD-2026</string>
+    <string name="credit_card_dvr_methodology">Credit Card DVR based on Bank Asia Credit Card PPG February 2025</string>
+</resources>
