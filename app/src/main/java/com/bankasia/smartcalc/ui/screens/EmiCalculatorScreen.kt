@@ -59,14 +59,19 @@ fun EmiCalculatorScreen(
             // Input fields
             Column {
                 OutlinedTextField(
-                    label = { Text("Loan Amount (BDT)") },
-                    placeholder = { Text("e.g., 1,000,000") },
+                    label = { Text("Amount") },
+                    placeholder = { Text("e.g., 10,00,000") },
                     value = principal,
-                    onValueChange = { principal = it },
+                    onValueChange = { input ->
+                        if (input.all { it.isDigit() || it == '.' || it == ',' }) {
+                            principal = input.replace(",", "")
+                        }
+                    },
+                    visualTransformation = com.bankasia.smartcalc.ui.util.IndianNumberVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    isError = errorMessage != null && errorMessage!!.contains("Loan amount"),
+                    isError = errorMessage != null && (errorMessage!!.contains("Loan amount") || errorMessage!!.contains("Amount")),
                     supportingText = {
-                        if (errorMessage != null && errorMessage!!.contains("Loan amount")) {
+                        if (errorMessage != null && (errorMessage!!.contains("Loan amount") || errorMessage!!.contains("Amount"))) {
                             Text(errorMessage!!)
                         }
                     },
@@ -80,7 +85,7 @@ fun EmiCalculatorScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     OutlinedTextField(
-                        label = { Text("Annual Interest Rate (%)") },
+                        label = { Text("Interest Rate") },
                         placeholder = { Text("e.g., 9.5") },
                         value = annualInterestRate,
                         onValueChange = { annualInterestRate = it },
@@ -102,24 +107,56 @@ fun EmiCalculatorScreen(
                     )
                 }
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(12.dp))
 
-                // Tenure unit selection
+                // Tenure unit selection - larger and easily noticeable buttons
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Start
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    FilterChip(
-                        selected = tenureUnit == EmiCalculator.TenureUnit.YEARS,
-                        onClick = { tenureUnit = EmiCalculator.TenureUnit.YEARS },
-                        label = { Text("Years") }
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    FilterChip(
-                        selected = tenureUnit == EmiCalculator.TenureUnit.MONTHS,
-                        onClick = { tenureUnit = EmiCalculator.TenureUnit.MONTHS },
-                        label = { Text("Months") }
-                    )
+                    if (tenureUnit == EmiCalculator.TenureUnit.YEARS) {
+                        Button(
+                            onClick = { tenureUnit = EmiCalculator.TenureUnit.YEARS },
+                            modifier = Modifier
+                                .weight(1f)
+                                .height(44.dp),
+                            shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp)
+                        ) {
+                            Text("Years", fontWeight = FontWeight.Bold)
+                        }
+                    } else {
+                        OutlinedButton(
+                            onClick = { tenureUnit = EmiCalculator.TenureUnit.YEARS },
+                            modifier = Modifier
+                                .weight(1f)
+                                .height(44.dp),
+                            shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp)
+                        ) {
+                            Text("Years")
+                        }
+                    }
+
+                    if (tenureUnit == EmiCalculator.TenureUnit.MONTHS) {
+                        Button(
+                            onClick = { tenureUnit = EmiCalculator.TenureUnit.MONTHS },
+                            modifier = Modifier
+                                .weight(1f)
+                                .height(44.dp),
+                            shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp)
+                        ) {
+                            Text("Months", fontWeight = FontWeight.Bold)
+                        }
+                    } else {
+                        OutlinedButton(
+                            onClick = { tenureUnit = EmiCalculator.TenureUnit.MONTHS },
+                            modifier = Modifier
+                                .weight(1f)
+                                .height(44.dp),
+                            shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp)
+                        ) {
+                            Text("Months")
+                        }
+                    }
                 }
             }
 
@@ -190,7 +227,7 @@ fun EmiCalculatorScreen(
                         strokeWidth = 2.dp
                     )
                 } else {
-                    Text("Calculate EMI")
+                    Text("Calculate")
                 }
             }
 

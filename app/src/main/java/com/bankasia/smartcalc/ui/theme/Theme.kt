@@ -1,10 +1,12 @@
 package com.bankasia.smartcalc.ui.theme
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import com.bankasia.smartcalc.domain.util.IndianNumberFormatter
 import java.math.BigDecimal
-import java.math.RoundingMode
 
 private val LightColorScheme = lightColorScheme(
     primary = Primary,
@@ -36,40 +38,60 @@ private val LightColorScheme = lightColorScheme(
     scrim = Scrim
 )
 
+private val DarkColorScheme = darkColorScheme(
+    primary = DarkPrimary,
+    onPrimary = DarkOnPrimary,
+    primaryContainer = DarkPrimaryContainer,
+    onPrimaryContainer = DarkOnPrimaryContainer,
+    secondary = DarkSecondary,
+    onSecondary = DarkOnSecondary,
+    secondaryContainer = DarkSecondaryContainer,
+    onSecondaryContainer = DarkOnSecondaryContainer,
+    tertiary = DarkTertiary,
+    onTertiary = DarkOnTertiary,
+    tertiaryContainer = DarkTertiaryContainer,
+    onTertiaryContainer = DarkOnTertiaryContainer,
+    error = DarkError,
+    onError = DarkOnError,
+    errorContainer = DarkErrorContainer,
+    onErrorContainer = DarkOnErrorContainer,
+    background = DarkBackground,
+    onBackground = DarkOnBackground,
+    surface = DarkSurface,
+    onSurface = DarkOnSurface,
+    surfaceVariant = DarkSurfaceVariant,
+    onSurfaceVariant = DarkOnSurfaceVariant,
+    outline = DarkOutline,
+    inverseOnSurface = DarkInverseOnSurface,
+    inverseSurface = DarkInverseSurface,
+    inversePrimary = DarkInversePrimary,
+    scrim = Scrim
+)
+
 @Composable
-fun SmartCalcTheme(content: @Composable () -> Unit) {
+fun SmartCalcTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
+    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
+
     MaterialTheme(
-        colorScheme = LightColorScheme,
+        colorScheme = colorScheme,
         content = content
     )
 }
 
 /**
- * Format a BigDecimal as Bangladeshi Taka currency.
- * Uses comma-separated formatting with ৳ symbol.
+ * Format a BigDecimal as Bangladeshi Taka currency using the Indian numbering system (Lakhs / Crores).
+ * Uses comma-separated formatting with ৳ symbol (e.g. ৳ 1,00,000).
  */
 fun formatCurrency(value: BigDecimal): String {
-    val scale = 2
-    val rounded = value.setScale(scale, RoundingMode.HALF_UP)
-    val isNegative = rounded < BigDecimal.ZERO
-    val abs = rounded.abs()
-    val intPart = abs.setScale(0, RoundingMode.DOWN).toBigInteger()
-    val decPart = abs.subtract(intPart.toBigDecimal()).setScale(scale, RoundingMode.HALF_UP)
+    return IndianNumberFormatter.formatIndianCurrency(value)
+}
 
-    val intStr = intPart.toString()
-    val result = StringBuilder()
-    var count = 0
-    for (i in intStr.length - 1 downTo 0) {
-        if (count > 0 && count % 3 == 0) result.insert(0, ',')
-        result.insert(0, intStr[i])
-        count++
-    }
-
-    val decStr = decPart.toString().substringAfter('.')
-    if (decStr != "00") {
-        result.append('.').append(decStr)
-    }
-
-    val formatted = if (isNegative) "-$result" else result.toString()
-    return "৳ $formatted"
+/**
+ * Format a BigDecimal using Indian comma grouping without currency symbol.
+ */
+fun formatNumber(value: BigDecimal): String {
+    return IndianNumberFormatter.formatIndianNumber(value)
 }

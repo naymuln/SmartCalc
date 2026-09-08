@@ -19,6 +19,7 @@ import com.bankasia.smartcalc.domain.calculator.CreditCardDvrCalculator.CreditCa
 import com.bankasia.smartcalc.domain.validation.CalculatorValidator
 import com.bankasia.smartcalc.domain.validation.ValidationResult
 import com.bankasia.smartcalc.ui.theme.formatCurrency
+import com.bankasia.smartcalc.ui.util.IndianNumberVisualTransformation
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -354,6 +355,7 @@ private fun CCMonthlyNetSalarySection(
         label = { Text("Take-home monthly salary after deductions") },
         value = monthlyNetSalary,
         onValueChange = { onSalaryChanged(it) },
+        visualTransformation = IndianNumberVisualTransformation(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         modifier = Modifier.fillMaxWidth()
     )
@@ -400,6 +402,7 @@ private fun CCExistingLoansSection(
                         updated[index] = item.copy(amount = it)
                         onLoanListChanged(updated)
                     },
+                    visualTransformation = IndianNumberVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     modifier = Modifier.weight(1f)
                 )
@@ -441,6 +444,7 @@ private fun CCProposedCardSection(
         label = { Text("Amount being applied for") },
         value = proposedLimit,
         onValueChange = { onLimitChanged(it) },
+        visualTransformation = IndianNumberVisualTransformation(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         modifier = Modifier.fillMaxWidth()
     )
@@ -475,6 +479,7 @@ private fun CCCreditCardsSection(
                         updated[index] = item.copy(limit = it)
                         onCardListChanged(updated)
                     },
+                    visualTransformation = IndianNumberVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     modifier = Modifier.weight(1f)
                 )
@@ -488,6 +493,7 @@ private fun CCCreditCardsSection(
                         updated[index] = item.copy(outstanding = it)
                         onCardListChanged(updated)
                     },
+                    visualTransformation = IndianNumberVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     modifier = Modifier.weight(1f)
                 )

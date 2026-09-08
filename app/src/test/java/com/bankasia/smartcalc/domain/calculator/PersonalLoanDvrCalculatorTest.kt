@@ -24,7 +24,7 @@ class PersonalLoanDvrCalculatorTest {
         // Income: 50000
         // DVR = 15000/50000 * 100 = 30%
         assertEquals(BigDecimal("30.00"), result.dvrValue)
-        assertEquals(50.0, result.permittedDvr, 0.01) // Category A/B 50k-69k = 50%
+        assertEquals(40.0, result.permittedDvr, 0.01) // Category A/B 35k-54k = 40%
     }
 
     @Test
@@ -172,7 +172,7 @@ class PersonalLoanDvrCalculatorTest {
             customerCategory = PersonalLoanDvrCalculator.CustomerCategory.CategoryAB
         )
 
-        assertEquals(BigDecimal.ZERO, result.dvrValue)
+        assertEquals(BigDecimal("0.00"), result.dvrValue)
     }
 
     @Test

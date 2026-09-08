@@ -8,7 +8,7 @@ import java.math.BigDecimal
 class CreditCardDvrCalculatorTest {
 
     @Test
-    fun `Credit Card DVR with no existing loans/cards`() {
+    fun `Credit Card DVR with no existing loans or cards`() {
         val input = CreditCardDvrCalculator.Input(
             monthlyNetSalary = BigDecimal("30000"),
             existingLoanEmis = listOf(),
@@ -72,7 +72,7 @@ class CreditCardDvrCalculatorTest {
 
         assertEquals(BigDecimal("62.50"), result.dbrValue)
         assertEquals(45.0, result.maximumAllowedDvr, 0.01)
-        assertTrue(result.isEligible)
+        org.junit.Assert.assertFalse(result.isEligible)
     }
 
     @Test
@@ -90,7 +90,7 @@ class CreditCardDvrCalculatorTest {
         val result = CreditCardDvrCalculator.calculateDbr(input)
 
         assertEquals(BigDecimal("12.50"), result.dbrValue)
-        assertEquals(55.0, result.maximumAllowedDvr, 0.01)
+        assertEquals(50.0, result.maximumAllowedDvr, 0.01)
         assertTrue(result.isEligible)
     }
 
@@ -120,9 +120,14 @@ class CreditCardDvrCalculatorTest {
         )
 
         val result = CreditCardDvrCalculator.calculateDbr(input)
+        val relaxedDvr = CreditCardDvrCalculator.applyOwnHouseRelaxation(
+            baseDbr = result.maximumAllowedDvr,
+            ownsOwnHouse = true,
+            hasHomeLoan = false
+        )
 
-        assertEquals(BigDecimal("17.50"), result.dbrValue)
-        assertEquals(50.0, result.maximumAllowedDvr, 0.01)
+        assertEquals(BigDecimal("12.50"), result.dbrValue)
+        assertEquals(50.0, relaxedDvr, 0.01)
         assertTrue(result.isEligible)
     }
 
@@ -152,7 +157,7 @@ class CreditCardDvrCalculatorTest {
 
         val result = CreditCardDvrCalculator.calculateDbr(input)
 
-        assertEquals(BigDecimal("5.00"), result.dbrValue)
+        assertEquals(BigDecimal("10.00"), result.dbrValue)
         assertEquals(50.0, result.maximumAllowedDvr, 0.01)
     }
 

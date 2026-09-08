@@ -122,7 +122,7 @@ SmartCalc
 
 | Calculator | Reference Standard | Key Metrics |
 | :--- | :--- | :--- |
-| **Loan EMI** | Standard Reducing-Balance Formula | Monthly Installment, Total Interest, Total Payable |
+| **EMI Calculator** | Standard Reducing-Balance Formula | Monthly Installment, Total Interest, Total Payable |
 | **Personal Loan DVR** | Bank Asia Personal Loan PPD-2026 | Capacity-to-pay, Maximum Disbursable Amount, Allowable DBR |
 | **Credit Card DVR** | Bank Asia Credit Card PPG Feb 2025 | DBR Threshold, Recommended Card Limit, Obligation Ratio |
 
@@ -135,7 +135,7 @@ SmartCalc
 
 ## 👨‍💻 Author & Maintainer
 
-**Nahin**  
+**Naymul Nahin**  
 - X / Twitter: [@naymuln_](https://twitter.com/naymuln_)
 - GitHub: [@naymuln](https://github.com/naymuln)
 

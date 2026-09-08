@@ -63,9 +63,8 @@ object EmiCalculator {
             numerator.divide(denominator, DISPLAY_SCALE, RoundingMode.HALF_UP)
         }
 
-        val totalPayment = monthlyEmi.multiply(BigDecimal.valueOf(n.toLong()))
-        val totalInterest = totalPayment.subtract(input.principal)
-            .max(ZERO)
+        val totalPayment = if (r == ZERO) input.principal else monthlyEmi.multiply(BigDecimal.valueOf(n.toLong()))
+        val totalInterest = if (r == ZERO) ZERO else totalPayment.subtract(input.principal).max(ZERO)
 
         return Result(
             principal = input.principal,
@@ -77,30 +76,10 @@ object EmiCalculator {
     }
 
     private fun formatCurrency(value: BigDecimal): String {
-        return "৳ ${formatNumber(value)}"
+        return com.bankasia.smartcalc.domain.util.IndianNumberFormatter.formatIndianCurrency(value)
     }
 
     private fun formatNumber(value: BigDecimal): String {
-        val rounded = value.setScale(DISPLAY_SCALE, RoundingMode.HALF_UP)
-        val isNegative = rounded < ZERO
-        val abs = rounded.abs()
-        val intPart = abs.setScale(0, RoundingMode.DOWN).toBigInteger()
-        val decPart = abs.subtract(intPart.toBigDecimal()).setScale(DISPLAY_SCALE, RoundingMode.HALF_UP)
-
-        val intStr = intPart.toString()
-        val result = StringBuilder()
-        var count = 0
-        for (i in intStr.length - 1 downTo 0) {
-            if (count > 0 && count % 3 == 0) result.insert(0, ',')
-            result.insert(0, intStr[i])
-            count++
-        }
-
-        val decStr = decPart.toString().substringAfter('.')
-        if (decStr != "00") {
-            result.append('.').append(decStr)
-        }
-
-        return if (isNegative) "-$result" else result.toString()
+        return com.bankasia.smartcalc.domain.util.IndianNumberFormatter.formatIndianNumber(value)
     }
 }

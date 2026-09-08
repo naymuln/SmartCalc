@@ -87,7 +87,7 @@ fun InfoScreen(
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = "Nahin",
+                    text = "Naymul Nahin",
                     style = MaterialTheme.typography.headlineMedium,
                     fontWeight = FontWeight.Bold
                 )
@@ -131,7 +131,7 @@ fun InfoScreen(
 
                 MethodologyItem(
                     icon = Icons.Filled.Schedule,
-                    title = "Personal Loan EMI",
+                    title = "EMI Calculator",
                     description = "Standard reducing-balance EMI formula: EMI = P × r × (1+r)^n / ((1+r)^n - 1)"
                 )
 
@@ -184,7 +184,7 @@ fun InfoScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Made with ❤️ by Nahin for Bank Asia PLC",
+                    text = "Made with ❤️ by Naymul Nahin for Bank Asia PLC",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

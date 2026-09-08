@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.bankasia.smartcalc.data.local.ThemePreferences
 
 /**
  * Settings screen for theme selection and app configuration.
@@ -20,7 +21,7 @@ fun SettingsScreen(
     navController: NavController,
     modifier: Modifier = Modifier
 ) {
-    var themeSelection by remember { mutableStateOf("system") }
+    val themeSelection by ThemePreferences.themeMode.collectAsState()
 
     Scaffold(
         topBar = {
@@ -44,7 +45,7 @@ fun SettingsScreen(
             SectionTitle(text = "Appearance")
             ThemeSelection(
                 currentSelection = themeSelection,
-                onSelectionChanged = { themeSelection = it }
+                onSelectionChanged = { ThemePreferences.setThemeMode(it) }
             )
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -103,18 +104,18 @@ private fun ThemeSelection(
 
         Column {
             ThemeRadioButton(
-                selected = currentSelection == "light",
-                onClick = { onSelectionChanged("light") },
+                selected = currentSelection == ThemePreferences.MODE_LIGHT,
+                onClick = { onSelectionChanged(ThemePreferences.MODE_LIGHT) },
                 label = "Light"
             )
             ThemeRadioButton(
-                selected = currentSelection == "dark",
-                onClick = { onSelectionChanged("dark") },
+                selected = currentSelection == ThemePreferences.MODE_DARK,
+                onClick = { onSelectionChanged(ThemePreferences.MODE_DARK) },
                 label = "Dark"
             )
             ThemeRadioButton(
-                selected = currentSelection == "system",
-                onClick = { onSelectionChanged("system") },
+                selected = currentSelection == ThemePreferences.MODE_SYSTEM,
+                onClick = { onSelectionChanged(ThemePreferences.MODE_SYSTEM) },
                 label = "System Default"
             )
         }

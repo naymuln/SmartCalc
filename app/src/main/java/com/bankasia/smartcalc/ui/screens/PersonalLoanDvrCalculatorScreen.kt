@@ -20,6 +20,7 @@ import com.bankasia.smartcalc.domain.calculator.PersonalLoanDvrCalculator.Custom
 import com.bankasia.smartcalc.domain.validation.CalculatorValidator
 import com.bankasia.smartcalc.domain.validation.ValidationResult
 import com.bankasia.smartcalc.ui.theme.formatCurrency
+import com.bankasia.smartcalc.ui.util.IndianNumberVisualTransformation
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -318,6 +319,7 @@ private fun PLIncomeSection(
         label = { Text("Considered monthly income") },
         value = monthlyIncome,
         onValueChange = { onIncomeChanged(it) },
+        visualTransformation = IndianNumberVisualTransformation(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         modifier = Modifier.fillMaxWidth()
     )
@@ -351,6 +353,7 @@ private fun PLExistingLoansSection(
                         updated[index] = item.copy(amount = it)
                         onLoanListChanged(updated)
                     },
+                    visualTransformation = IndianNumberVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -403,6 +406,7 @@ private fun PLCcOdInterestSection(
         label = { Text("Average monthly interest from CC/OD accounts") },
         value = averageInterest,
         onValueChange = { onInterestChanged(it) },
+        visualTransformation = IndianNumberVisualTransformation(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         modifier = Modifier.fillMaxWidth()
     )
@@ -437,6 +441,7 @@ private fun PLCreditCardsSection(
                         updated[index] = item.copy(limit = it)
                         onCardListChanged(updated)
                     },
+                    visualTransformation = IndianNumberVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     modifier = Modifier.weight(1f)
                 )
@@ -450,6 +455,7 @@ private fun PLCreditCardsSection(
                         updated[index] = item.copy(outstanding = it)
                         onCardListChanged(updated)
                     },
+                    visualTransformation = IndianNumberVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     modifier = Modifier.weight(1f)
                 )
@@ -561,6 +567,7 @@ private fun PLProposedLoanSection(
         label = { Text("Loan Amount (BDT)") },
         value = loanAmount,
         onValueChange = { onAmountChanged(it) },
+        visualTransformation = IndianNumberVisualTransformation(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         modifier = Modifier.fillMaxWidth()
     )

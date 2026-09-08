@@ -86,7 +86,7 @@ private fun CalculatorsSection(navController: NavController) {
         // EMI Calculator Card
         CalculatorCard(
             icon = Icons.Filled.Schedule,
-            title = "Personal Loan EMI",
+            title = "EMI Calculator",
             description = "Calculate monthly loan installment",
             onClick = { navController.navigate("emi") }
         )
