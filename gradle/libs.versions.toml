@@ -1,6 +1,6 @@
 [versions]
-androidGradlePlugin = "8.2.2"
-kotlin = "1.9.22"
+androidGradlePlugin = "9.2.1"
+kotlin = "2.2.10"
 composeBom = "2024.02.00"
 material = "1.11.0"
 constraintlayout = "2.1.4"
@@ -9,8 +9,8 @@ activity = "1.8.2"
 navigation = "2.7.7"
 coreKtx = "1.12.0"
 appcompat = "1.6.1"
-hilt = "2.51.1"
-room = "2.6.1"
+hilt = "2.60.1"
+room = "2.8.4"
 material3 = "1.2.1"
 coroutines = "1.7.3"
 
@@ -19,6 +19,7 @@ android-application = { id = "com.android.application", version.ref = "androidGr
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 [libraries]
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }

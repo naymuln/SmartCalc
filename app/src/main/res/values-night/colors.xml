@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#FF74CEFF</color>
+    <color name="onPrimary">#FF003453</color>
+    <color name="primaryContainer">#FF004B76</color>
+    <color name="onPrimaryContainer">#FFCCE7FF</color>
+    <color name="secondary">#FF74CEFF</color>
+    <color name="onSecondary">#FF003453</color>
+    <color name="secondaryContainer">#FF004B76</color>
+    <color name="onSecondaryContainer">#FFCCE7FF</color>
+    <color name="tertiary">#FF74CEFF</color>
+    <color name="onTertiary">#FF003453</color>
+    <color name="tertiaryContainer">#FF004B76</color>
+    <color name="onTertiaryContainer">#FFCCE7FF</color>
+    <color name="error">#FFFFB4AB</color>
+    <color name="onError">#FF690005</color>
+    <color name="errorContainer">#FF93000A</color>
+    <color name="onErrorContainer">#FFFFDAD6</color>
+    <color name="background">#FF111317</color>
+    <color name="onBackground">#FFE2E2E6</color>
+    <color name="surface">#FF111317</color>
+    <color name="onSurface">#FFE2E2E6</color>
+    <color name="surfaceVariant">#FF1E2128</color>
+    <color name="onSurfaceVariant">#FFC3C7D0</color>
+    <color name="outline">#FF464952</color>
+    <color name="inverseOnSurface">#FF1C1B1E</color>
+    <color name="inverseSurface">#FFE2E2E6</color>
+    <color name="inversePrimary">#FF00639C</color>
+    <color name="scrim">#FF000000</color>
+    <color name="transparent">#00000000</color>
+</resources>

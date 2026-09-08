@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -32,11 +34,16 @@ class MainActivity : ComponentActivity() {
             SmartCalcTheme(darkTheme = isDark) {
                 val navController = rememberNavController()
 
-                Scaffold { paddingValues ->
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    containerColor = MaterialTheme.colorScheme.background
+                ) { paddingValues ->
                     NavHost(
                         navController = navController,
                         startDestination = "home",
-                        modifier = Modifier.padding(paddingValues)
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(paddingValues)
                     ) {
                         composable("home") {
                             HomeScreen(navController = navController)
